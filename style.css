@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body {
     font-family: Arial, sans-serif;
     margin: 40px;
@@ -17,4 +18,25 @@ button {
     background-color: #f2f2f2;
     padding: 15px;
     width: 300px;
+=======
+body {
+    font-family: Arial, sans-serif;
+    margin: 40px;
+}
+
+input {
+    padding: 8px;
+    margin-left: 10px;
+}
+
+button {
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+#report {
+    background-color: #f2f2f2;
+    padding: 15px;
+    width: 300px;
+>>>>>>> 85c46c7c802888b2f7d27d49046c77122abca103
 }
