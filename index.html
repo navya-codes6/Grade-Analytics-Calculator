@@ -1,78 +1,130 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Grade Calculator</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GradeTrack</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <h1>Grade Calculator</h1>
+<main class="app">
 
-    <label>Student Name:</label>
-    <input type="text" id="studentName">
+    <section id="homePage">
+        <h1>GradeTrack</h1>
+        <p class="subtitle">Your Academic Performance Toolkit</p>
 
-    <br><br>
+        <label for="studentName">Student Name:</label>
+        <input type="text" id="studentName" placeholder="Enter your name">
 
-    <label>Course 1 Mark:</label>
-    <input type="number" id="mark1">
+        <label for="institutionName">Institution:</label>
 
-    <br><br>
+        <div class="searchBox">
+            <input type="text" id="institutionName" placeholder="Search your institution" oninput="showInstitutionSuggestions()">
+            <div id="institutionSuggestions" class="suggestions hidden"></div>
+        </div>
 
-    <label>Course 2 Mark:</label>
-    <input type="number" id="mark2">
+        <p id="selectedInstitutionMessage" class="selectedMessage"></p>
 
-    <br><br>
+        <div class="infoBox">
+            <h3>Can't find your institution?</h3>
+            <p>You can still use one of the standard grading systems or create your own custom grading scale.</p>
+        </div>
 
-    <label>Course 3 Mark:</label>
-    <input type="number" id="mark3">
+        <label for="gradingSystem">Choose Standard Grading System:</label>
+        <select id="gradingSystem">
+            <optgroup label="Standard Grading Systems">
+                <option value="standard4">Standard 4.0</option>
+                <option value="standard43">Standard 4.3</option>
+                <option value="standard45">Standard 4.5</option>
+                <option value="standard5">Standard 5.0</option>
+            </optgroup>
 
-    <br><br>
+            <optgroup label="Canada">
+                <option value="ualberta">University of Alberta</option>
+                <option value="macewan">MacEwan University</option>
+                <option value="ucalgary">University of Calgary</option>
+                <option value="usask">University of Saskatchewan</option>
+                <option value="umanitoba">University of Manitoba</option>
+                <option value="uwinnipeg">University of Winnipeg</option>
+                <option value="waterloo">University of Waterloo</option>
+                <option value="utoronto">University of Toronto</option>
+                <option value="ubc">University of British Columbia</option>
+                <option value="mcgill">McGill University</option>
+            </optgroup>
+        </select>
 
-    <button onclick="calculateGrade()">Calculate</button>
+        <h2>What would you like to calculate?</h2>
 
-    <h2>Student Report</h2>
-    <p id="report"></p>
+        <button onclick="showOverallGpaPage()">📊 Overall GPA Calculator</button>
+        <button onclick="showCourseGradePage()">📚 Course Grade Calculator</button>
+    </section>
 
-    <script src="script.js"></script>
+    <section id="overallGpaPage" class="hidden">
+        <button onclick="goBack()">← Back</button>
+
+        <h2>Overall GPA Calculator</h2>
+        <p>Use this if you already know your grade in each course.</p>
+
+        <div id="quickCoursesContainer">
+            <div class="quickCourse">
+                <input type="text" class="quickCourseName" placeholder="Course name">
+                <input type="number" class="quickCourseGrade" placeholder="Grade %">
+                <button onclick="deleteQuickCourse(this)" class="deleteBtn">🗑️</button>
+            </div>
+        </div>
+
+        <button onclick="addQuickCourse()">+ Add Course</button>
+        <button onclick="calculateOverallGpa()">Calculate Overall GPA</button>
+    </section>
+
+    <section id="courseGradePage" class="hidden">
+        <button onclick="goBack()">← Back</button>
+
+        <h2>Course Grade Calculator</h2>
+        <p>Use this if you want to calculate course grades using assessments and weights.</p>
+
+        <div id="coursesContainer">
+            <div class="course">
+                <div class="courseHeader">
+                    <h3>Course 1</h3>
+                    <button onclick="deleteCourse(this)" class="deleteBtn">🗑️</button>
+                </div>
+
+                <input type="text" class="courseName" placeholder="Course name">
+
+                <h4>Assessments</h4>
+
+                <div class="assessmentsContainer">
+                    <div class="assessment">
+                        <input type="text" class="assessmentName" placeholder="Assessment name">
+                        <input type="number" class="score" placeholder="Score">
+                        <input type="number" class="outOf" placeholder="Out of">
+                        <input type="number" class="weight" placeholder="Weight %">
+                        <button onclick="deleteAssessment(this)" class="deleteBtn">🗑️</button>
+                    </div>
+                </div>
+
+                <button onclick="addAssessment(this)">+ Add Assessment</button>
+
+                <h4>Target Final Grade</h4>
+                <input type="number" class="targetGrade" placeholder="Desired final grade %">
+                <input type="number" class="finalWeight" placeholder="Final exam weight %">
+            </div>
+        </div>
+
+        <button onclick="addCourse()">+ Add Course</button>
+        <button onclick="calculateCourseGrades()">Calculate Course Grades</button>
+    </section>
+
+    <section id="resultsSection" class="hidden">
+        <h2>Results</h2>
+        <div id="results"></div>
+    </section>
+
+</main>
+
+<script src="gradingSystems.js"></script>
+<script src="script.js"></script>
 </body>
-=======
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Grade Calculator</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-    <h1>Grade Calculator</h1>
-
-    <label>Student Name:</label>
-    <input type="text" id="studentName">
-
-    <br><br>
-
-    <label>Course 1 Mark:</label>
-    <input type="number" id="mark1">
-
-    <br><br>
-
-    <label>Course 2 Mark:</label>
-    <input type="number" id="mark2">
-
-    <br><br>
-
-    <label>Course 3 Mark:</label>
-    <input type="number" id="mark3">
-
-    <br><br>
-
-    <button onclick="calculateGrade()">Calculate</button>
-
-    <h2>Student Report</h2>
-    <p id="report"></p>
-
-    <script src="script.js"></script>
-</body>
->>>>>>> 85c46c7c802888b2f7d27d49046c77122abca103
 </html>
